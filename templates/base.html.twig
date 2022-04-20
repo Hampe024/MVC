@@ -5,6 +5,7 @@
         
 
     <body>
+        <div class="outer-nav"></div>
         <div class="wrapper">
             <div class="navbar">
                 <a href="{{ path("home") }}">Home</a>
@@ -14,6 +15,9 @@
             {% block content %}
                 default
             {% endblock %}
+        </div>
+        <div class="footer">
+            Website made with symfony
         </div>
     </body>
 
