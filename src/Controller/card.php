@@ -33,8 +33,7 @@ class card extends AbstractController
     public function cardDeck(
         SessionInterface $session,
         Request $request
-        ): Response {
-        
+    ): Response {
         $debug = "deck";
 
         if ($request->request->has("newDeck")) {
@@ -42,20 +41,18 @@ class card extends AbstractController
             $session->set("deck", $deck);
             $deck = $deck->print_cards();
             $debug = "deck new deck";
-        }
-        else {
+        } else {
             if ($session->has("deck")) { # deck in session
                 $deck = $session->get("deck")->print_cards();
                 $debug = "deck in sess";
-            }
-            else { # deck not in session
+            } else { # deck not in session
                 $deck = new \App\card\Deck();
                 $session->set("deck", $deck);
                 $deck = $deck->print_cards();
                 $debug = "deck not sess";
             }
         }
-        
+
         $data = [
             "cards" => $deck,
             "debug" => $debug,
@@ -74,20 +71,17 @@ class card extends AbstractController
     public function cardDeckShuffle(
         SessionInterface $session,
         Request $request
-        ): Response {
-        
+    ): Response {
         $debug = "shuffle";
         if ($request->request->has("reShuffle")) {
             $deck = $session->get("deck");
             $deck->shuffler();
             $debug = "shuffle in sess";
-        }
-        else {
+        } else {
             if ($session->has("deck")) { # deck in session
                 $deck = $session->get("deck");
                 $debug = "shuffle in sess noShuff";
-            }
-            else { # deck not in session
+            } else { # deck not in session
                 $deck = new \App\card\Deck();
                 $session->set("deck", $deck);
                 $debug = "shuffle not sess";
@@ -112,8 +106,7 @@ class card extends AbstractController
     public function cardDeckDraw(
         SessionInterface $session,
         Request $request
-        ): Response {
-        
+    ): Response {
         $debug = "draw";
 
         if ($request->request->has("newDeck")) {
@@ -121,19 +114,15 @@ class card extends AbstractController
             $session->set("deck", $deck);
             $debug = "draw new deck";
             $drawCard = "🂠";
-        }
-
-        elseif ($request->request->has("newDraw")) {
+        } elseif ($request->request->has("newDraw")) {
             $deck = $session->get("deck");
             $drawCard = $deck->draw()->getAsString();
             $debug = "draw in sess";
-        }
-        else {
+        } else {
             if ($session->has("deck")) { # deck in session
                 $deck = $session->get("deck");
                 $debug = "draw in sess";
-            }
-            else { # deck not in session
+            } else { # deck not in session
                 $deck = new \App\card\Deck();
                 $session->set("deck", $deck);
                 $debug = "draw not sess";
@@ -162,8 +151,7 @@ class card extends AbstractController
         SessionInterface $session,
         Request $request,
         int $cardNumb
-        ): Response {
-        
+    ): Response {
         $debug = "deck";
 
         if ($request->request->has("newDeck")) {
@@ -184,21 +172,18 @@ class card extends AbstractController
                     array_push($drawCard, "🂠");
                 }
                 $this->addFlash("cardKeyError", "You can not draw $cardNumb from the deck");
-            }
-            else {
+            } else {
                 $drawCard = [];
                 for ($i = 0; $i <= $cardNumb; $i ++) {
                     array_push($drawCard, $deck->draw()->getAsString());
                 }
             }
             $debug = "draw in sess";
-        }
-        else {
+        } else {
             if ($session->has("deck")) { # deck in session
                 $deck = $session->get("deck");
                 $debug = "draw in sess";
-            }
-            else { # deck not in session
+            } else { # deck not in session
                 $deck = new \App\card\Deck();
                 $session->set("deck", $deck);
                 $debug = "draw not sess";
@@ -208,7 +193,7 @@ class card extends AbstractController
                 array_push($drawCard, "🂠");
             }
         }
-        
+
         $data = [
             "cards" => $deck->print_cards(),
             "debug" => $debug ?? "default debug",
@@ -231,8 +216,7 @@ class card extends AbstractController
         Request $request,
         int $playerNumb,
         int $cardNumb
-        ): Response {
-
+    ): Response {
         $debug = "deck players";
         $deck = $session->get("deck") ?? new \App\card\deck();
 
@@ -253,7 +237,7 @@ class card extends AbstractController
         }
 
 
-        
+
 
         if ($request->request->has("newDeck")) {
             $deck = new \App\card\Deck();
@@ -269,9 +253,9 @@ class card extends AbstractController
         }
 
 
-        
-        
-        
+
+
+
         $data = [
             "cards" => $deck->print_cards(),
             "debug" => $debug ?? "default debug",
@@ -293,8 +277,7 @@ class card extends AbstractController
     public function cardDeck2(
         SessionInterface $session,
         Request $request
-        ): Response {
-        
+    ): Response {
         $debug = "deck";
 
         if ($request->request->has("newDeck")) {
@@ -302,20 +285,18 @@ class card extends AbstractController
             $session->set("deck", $deck);
             $deck = $deck->print_cards();
             $debug = "deck new deck";
-        }
-        else {
+        } else {
             if ($session->has("deck")) { # deck in session
                 $deck = $session->get("deck")->print_cards();
                 $debug = "deck in sess";
-            }
-            else { # deck not in session
+            } else { # deck not in session
                 $deck = new \App\card\Deck();
                 $session->set("deck", $deck);
                 $deck = $deck->print_cards();
                 $debug = "deck not sess";
             }
         }
-        
+
         $data = [
             "cards" => $deck,
             "debug" => $debug,
@@ -325,5 +306,4 @@ class card extends AbstractController
             ];
         return $this->render('card/card.html.twig', $data);
     }
-
 }

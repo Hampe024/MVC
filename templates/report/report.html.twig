@@ -30,4 +30,26 @@
 
 </div>
 
+<div class="kmom02">
+    <h1 style="text-align: center;">Kmom02</h1>
+
+    <ul>
+        <li>F&ouml;rklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de anv&auml;nds i PHP.<br />* arv inneb&auml;r att du har en klass som har likheter med en annan, tex hur i uppgiften DeckWith2Jokers &auml;r v&auml;ldigt lik Deck klassen, man kan d&auml;rf&ouml;r g&ouml;ra s&aring; den &auml;rver metoder&nbsp; och attributer fr&aring;n Deck klassen och sedan kan du overwrita de metoder /attributer du beh&ouml;ver.<br />* kompostion inneb&auml;r att en klass har en annan klass i sig, exempel p&aring; detta &auml;r fr&aring;n uppgiften hur varje Deck klass har 52 Card klasser i sig, som sparas i en attribut.<br />* Interface inneb&auml;r att du kan f&ouml;rdefiniera vilka metoder/attributer en klass m&aring;ste ha.<br />* trait anv&auml;nds i samband med arv, en trait kan anv&auml;ndas f&ouml;r att l&auml;tt omdefiniera en parent class metod.</li>
+    </ul>
+    <ul>
+        <li>
+            <p>Ber&auml;tta om din implementation fr&aring;n uppgiften. Hur l&ouml;ste du uppgiften, &auml;r du n&ouml;jd/missn&ouml;jd, vilken f&ouml;rb&auml;ttringspotential ser du i din koden och dina klasser?<br />Jag har 5 klasser: Card, Deck, DeckWith2Jokers, CardHand och Player. Jag &auml;r r&auml;tt n&ouml;jd med implementationen och jag gillar hur korten grafiskt visas upp fr&aring;n Card klassens $cards attribut beroende p&aring; f&auml;rg och value. DeckWith2Jokers &auml;rver allt fr&aring;n Deck f&ouml;rutom konstruktorn som jag beh&ouml;vde g&ouml;ra om f&ouml;r att l&auml;gga till 2 jokrar i slutet, men nu n&auml;r jag l&auml;st om trait s&aring; kanske jag kan g&ouml;ra om hur det funkar men hj&auml;lp av trait. Som det &auml;r nu i min kod &auml;r Player klassen v&auml;ldigt on&ouml;dig, dens metoder skickar bara vidare till metoder i CardHand d&aring; CardHand &auml;r i komposition med Player. Anledningen till att jag har kvar Player klassen ens &auml;r f&ouml;r att det kanske kommer senare i kursen att man kommer beh&ouml;va ha flera CardHands per Player eller att en Player kanske f&aring;r en attribut som definierar den i ett kortspel och om den sen vill f&aring; en ny CardHand mitt i spelet ska den attributen inte f&ouml;rsvinna. Men kanske blir att jag tar bort den senare.</p>
+        </li>
+        <li>
+            <p>Ber&auml;tta hur det k&auml;ndes att modellera ett kortspel med fl&ouml;desdiagram och psuedokod. Var det n&aring;got som du tror st&ouml;djer dig i din probleml&ouml;sning och tankearbete f&ouml;r att strukturera koden kring en applikation?<br />Det &auml;r ett bra s&auml;tt att planera ett projekt, och definitivt nyttigt d&aring; man beh&ouml;ver t&auml;nka fram lite med vilka metoder och attributer man kanske beh&ouml;ver. Men jag k&auml;nner att man n&auml;stan alltid gl&ouml;mmer saker end&aring;, s&aring; det k&auml;nns lite on&ouml;digt. Med psuedokod k&auml;nner jag att det &auml;r ungef&auml;r lika "jobbigt" att skriva i j&auml;mf&ouml;relse med vanlig kod, men du m&aring;ste sen skriva om det. Jag skulle d&auml;rf&ouml;r nog h&auml;llre skriva sm&aring;tt buggig vanlig kod och sedan fixa buggar &auml;n pseudokod och sedan g&aring; igenom och &auml;ndra allt till vanlig kod.</p>
+        </li>
+        <li>
+            <p>Vilken &auml;r din TIL f&ouml;r detta kmom?<br />Interface och trait inom klasser &auml;r inget jag har st&ouml;tt p&aring; tidigare, och &auml;ven om jag inte har hunnit anv&auml;nda de &auml;n s&aring; tror jag att de kommer vara till anv&auml;nding n&auml;r man jobbar mycker med objekt orientering.</p>
+        </li>
+    </ul>
+
+
+</div>
+
+
 {% endblock %}

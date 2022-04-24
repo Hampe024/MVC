@@ -32,4 +32,3 @@ class homePage extends AbstractController
         return $this->render('report/report.html.twig');
     }
 }
-
