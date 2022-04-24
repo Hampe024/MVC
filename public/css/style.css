@@ -75,3 +75,30 @@ a {
     height: 40px;
     background: #9D9D9D;
 }
+
+.cards {
+    font-size: 70px;
+    border: 2px solid black;
+}
+
+.card-nav {
+    margin-top: 20px;
+    text-align: center;
+    background-color: gray;
+    font-size: 20px;
+    width: auto;
+}
+
+.card-nav a {
+    padding: 3%;
+}
+
+.draw-card {
+    font-size: 100px;
+}
+
+form input {
+    width: auto;
+    height: auto;
+    font-size: 30px;
+}

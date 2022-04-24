@@ -13,7 +13,7 @@ class homePage extends AbstractController
      */
     public function home(): Response
     {
-        return $this->render('home.html.twig');
+        return $this->render('report/home.html.twig');
     }
 
     /**
@@ -21,7 +21,7 @@ class homePage extends AbstractController
      */
     public function about(): Response
     {
-        return $this->render('about.html.twig');
+        return $this->render('report/about.html.twig');
     }
 
     /**
@@ -29,7 +29,7 @@ class homePage extends AbstractController
      */
     public function report(): Response
     {
-        return $this->render('report.html.twig');
+        return $this->render('report/report.html.twig');
     }
 }
 

@@ -1,0 +1,44 @@
+
+{% extends "base/base.html.twig" %}
+{% block title %}Card{% endblock %}
+
+{% block content %}
+
+<div class="card-nav">
+    {{ include('base/card-nav.html.twig') }}
+</div>
+
+<div class="draw-card">
+    {% for card in drawCard ?? [] %} {# in card/deck/draw #}
+        {{ card }}
+    {% endfor %}
+</div>
+
+{{ cardKeyError ?? "" }}
+
+
+<div class="cards">
+    {{ cards ?? ""}}
+</div>
+
+{% if newDeck is defined %} {# in card/deck #}
+    <form method="post">
+        <input type="submit" name="newDeck" value="Ny kortlek">
+    </form>
+{% endif %}
+{% if reShuffle is defined %} {# in card/deck/shuffle #}
+    <form method="post">
+        <input type="submit" name="reShuffle" value="Blanda igen">
+    </form>
+{% endif %}
+{% if newDraw is defined %} {# in card/deck/draw #}
+    <form method="post">
+        <input type="submit" name="newDraw" value="Dra igen">
+    </form>
+{% endif %}
+
+
+
+{{ include('base/flash-messages.html.twig') }}
+{{ debug ?? ""}}
+{% endblock %}
