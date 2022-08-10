@@ -1,0 +1,47 @@
+
+{% extends "base/base.html.twig" %}
+
+{% block title %}doc{% endblock %}
+
+{% block content %}
+
+<img src="../img/flowchart.jpg" class="flowchart">
+
+<pre class="pseudo"> function game_round(deck)
+
+    player_cards += deck -> draw
+    player_cards += deck -> draw
+
+    loop:
+        if sum of player_cards < 21:
+            if wants more cards:
+                player_cards += deck -> draw
+            else:
+                end loop
+        else:
+            end loop
+
+    return sum of player_cards
+
+
+
+deck = new Deck
+
+player1_score = game_round(deck)
+player2_score = game_round(deck)
+
+if player1_score > player2_score:
+    player 1 won!
+else:
+    player 2 won!
+
+</pre>
+
+<p class="classes">
+Card:<br>
+Denna klassen syftar på ett kort, varje kort har 3 viktiga atributer, kortets x och y kordinat i en 2D array över hela leken, och värdet som kortet har.
+<br><br>
+Deck:<br>
+Denna klassen syftar på hela leken, Deck klassen har 52 Card objekt i sig som initieras i konstruktorn, här finns alla metoder som tex draw som tar ett nytt kort från leken och ger till en spelare.
+</p>
+{% endblock %}

@@ -218,7 +218,7 @@ class card extends AbstractController
         int $cardNumb
     ): Response {
         $debug = "deck players";
-        $deck = $session->get("deck") ?? new \App\card\deck();
+        $deck = $session->get("deck") ?? new \App\card\Deck();
 
         $players = [];
         for ($i = 0; $i < $playerNumb; $i ++) {

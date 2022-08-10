@@ -1,0 +1,11 @@
+{% extends "base/base.html.twig" %}
+{% block title %}Game{% endblock %}
+
+{% block content %}
+
+hej
+
+<a href="{{ path("game-play") }}">Starta</a>
+
+{{ include('base/flash-messages.html.twig') }}
+{% endblock %}
