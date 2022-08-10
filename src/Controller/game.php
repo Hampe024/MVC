@@ -24,11 +24,21 @@ class game extends AbstractController
      */
     public function gamePlay(): Response
     {
-        // $data = [
-        //     "draw5" => $this->generateUrl('card-deck-draw-amount', ['cardNumb' => 5,]),
-        //     "draw2Player3Cards" => $this->generateUrl('card-deck-draw-player-amount', ["playerNumb" => 2, 'cardNumb' => 5])
-        //     ];   , $data
-        return $this->render('game/play.html.twig');
+
+        $game = new \App\game\Game();
+
+        $player1 = $game->get_player(1);
+
+
+
+        $player1 = $game->initiate_round($player1);
+        echo $player1->cards[1]->value;
+
+        $data = [
+            "cards" => $game->deck->print_cards(),
+            "player_cards" => $player1->print_cards()
+            ];
+        return $this->render('game/play.html.twig', $data);
     }
 
     /**
