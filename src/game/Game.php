@@ -31,4 +31,10 @@ class Game
 
         return $player;
     }
+
+    public function draw_card($player)
+    {
+        array_push($player->cards, $this->deck->draw());
+        return $player;
+    }
 }

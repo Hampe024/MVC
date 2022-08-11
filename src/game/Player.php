@@ -5,7 +5,7 @@ namespace App\game;
 class Player
 {
 
-    public $cards;
+    public $cards = [];
     public $player_number;
 
     public function __construct($player_number)
@@ -21,5 +21,14 @@ class Player
             $str .= " ";
         }
         return $str;
+    }
+
+    public function print_card_sum()
+    {
+        $int = 0;
+        foreach ($this->cards as $card) {
+            $int += $card->value;
+        }
+        return $int;
     }
 }

@@ -9,10 +9,33 @@ SPEL
     {{ cards ?? ""}}
 </div>
 
-
+{{ player_cards_sum ?? ""}}
 <div class="cards">
     {{ player_cards ?? ""}}
 </div>
+
+<form method="post">
+    <input type="submit" name="newCard" value="Ett till kort">
+</form>
+
+<form method="post">
+    <input type="submit" name="done" value="Klar">
+</form>
+
+<br><br>
+
+{{ game_over ?? "" }}
+
+<br><br><br><br>
+
+<form method="post">
+    <input type="submit" name="kill_sess" value="kill session">
+</form>
+
+
+{{ debug ?? "" }}
+{{ debug2 ?? "" }}
+
 
 {{ include('base/flash-messages.html.twig') }}
 {% endblock %}
