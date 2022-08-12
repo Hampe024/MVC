@@ -1,0 +1,37 @@
+{% extends "base/base.html.twig" %}
+{% block title %}Game{% endblock %}
+
+{% block content %}
+
+
+{{ player_cards_sum ?? ""}}
+<div class="cards">
+    {{ player_cards ?? ""}}
+</div>
+
+
+<div class="ace">
+    {{ card ?? "hej" }}
+</div>
+
+<div class="ace-text">
+    Du fick ett ess, vill du att det ska vara värt 1 eller 14 poäng?
+</div>
+
+<div class="ace-button">
+    <form method="post">
+        <input type="submit" name="ace_1" value="1">
+    </form>
+    <form method="post">
+        <input type="submit" name="ace_14" value="14">
+    </form>
+</div>
+
+
+<form method="post">
+    <input type="submit" name="kill_sess" value="kill session">
+</form>
+
+
+{{ include('base/flash-messages.html.twig') }}
+{% endblock %}

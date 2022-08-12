@@ -28,7 +28,14 @@ class Card
     {
         $this->x = $x;
         $this->y = $y;
-        $this->value = $y + 1;
+        if ($y === 0) // card is ace, player decides value
+        {
+            $this->value = 0;
+        }
+        else
+        {
+            $this->value = $y + 1;
+        }
     }
 
     public function getAsString(): string

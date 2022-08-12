@@ -137,3 +137,22 @@ form input {
     width: 500px;
     float: right;
 }
+
+.ace {
+    font-size: 200px;
+}
+
+.ace-text {
+    float: right;
+    font-size: 30px;
+    margin-top: -130px;
+}
+
+.ace-button {
+    display: flex;
+    margin-left: 60%;
+}
+
+.ace-button > form {
+    margin: 20px;
+}

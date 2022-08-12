@@ -43,35 +43,72 @@ class game extends AbstractController
         else {
             $game = $session->get("game");
             $player = $game->get_player($session->get("current_player"));
-            $session->set("game", $game);
         }
 
+        if ($request->request->has("ace_1"))
+        {
+            $player->make_ace_value(1);
+        }
+        else if ($request->request->has("ace_14"))
+        {
+            $player->make_ace_value(14);
+        }
         
 
-        
+
         if ($request->request->has("newCard"))
         {
             $player = $game->draw_card($player);
         }
 
+
+
+        if ($player->print_card_sum() >= 21)
+        {
+            $new_card_button = False;
+        }
+        else {
+            $new_card_button = True;
+        }
+
+
+        
+
+        if ($player->has_new_ace())
+        {
+            $data = [
+                "card" => mb_substr($player->print_cards(), -2),
+                "player_cards" => $player->print_cards(),
+                "player_cards_sum" => $player->print_card_sum()
+            ];
+            return $this->render('game/checkAce.html.twig', $data);
+        }
+
+
         if ($request->request->has("done"))
         {
-            if ($player->player_number === 2)
+            if ($player->player_number === 2)   // game over
             {
-                if ($game->player1->print_card_sum() > $game->player2->print_card_sum())
+                if ($game->player1->print_card_sum() > $game->player2->print_card_sum())    // player 1 wins
                 {
-                    // player 1 wins
-                    $game_over = "Player 1 wins with " . $game->player1->print_card_sum() . " to " . $game->player2->print_card_sum();
+                    $game_over =
+                    "Player 1 wins with " . $game->player1->print_card_sum() .
+                    " to " . $game->player2->print_card_sum();
                 }
-                else
+                else    // player 2 wins
                 {
-                    // player 2 wins
-                    $game_over = "Player 2 wins with " . $game->player2->print_card_sum() . " to " . $game->player1->print_card_sum();
+                    $game_over = 
+                    "Player 2 wins with " . $game->player2->print_card_sum() .
+                    " to " . $game->player1->print_card_sum();
                 }
                 
             }
-            $player = $game->get_player($player->player_number + 1);
-            $player = $game->initiate_round($player);
+            else
+            {
+                $player = $game->get_player(2);
+                $player = $game->initiate_round($player);
+                $new_card_button = True;
+            }
         }
 
 
@@ -83,6 +120,7 @@ class game extends AbstractController
             "player_cards" => $player->print_cards(),
             "player_cards_sum" => $player->print_card_sum(),
             "game_over" => $game_over ?? "",
+            "new_card_button" => $new_card_button,
             "debug" => count($player->cards),
             "debug2" => $session->get("current_player")
             ];

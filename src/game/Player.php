@@ -31,4 +31,21 @@ class Player
         }
         return $int;
     }
+
+    public function has_new_ace()
+    {
+        foreach ($this->cards as $card)
+        {
+            if($card->value === 0)
+            {
+                return True;
+            }
+        }
+        return False;
+    }
+
+    public function make_ace_value($value)
+    {
+        $this->cards[count($this->cards)-1]->value = $value;
+    }
 }

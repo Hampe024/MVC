@@ -15,7 +15,11 @@ SPEL
 </div>
 
 <form method="post">
-    <input type="submit" name="newCard" value="Ett till kort">
+    {% if new_card_button == true %}
+        <input type="submit" name="newCard" value="Ett till kort">
+    {% else %}
+        <input type="submit" name="newCard" value="Ett till kort" disabled="disabled">
+    {% endif %}
 </form>
 
 <form method="post">
