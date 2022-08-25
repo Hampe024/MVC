@@ -156,3 +156,28 @@ form input {
 .ace-button > form {
     margin: 20px;
 }
+
+.player_cards_box {
+    background-color: red;
+    width: 1000px;
+}
+
+.player_cards {
+    font-size: 150px;
+    padding: -50px;
+}
+
+.player1, .player2 {
+    font-size: 150px;
+    letter-spacing: -20px;
+}
+
+.player1 {
+    float: right;
+    margin-top: 200px;
+}
+
+.game_over {
+    font-size: 40px;
+    margin-top: 50px;
+}

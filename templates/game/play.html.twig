@@ -5,41 +5,49 @@
 
 SPEL
 
-<div class="cards">
-    {{ cards ?? ""}}
-</div>
+{% if result_button is defined %}
+    <form method="post">
+        <input type="submit" name="getResult" value="Få resultat">
+    </form>
+{% else %}
 
-{{ player_cards_sum ?? ""}}
-<div class="cards">
-    {{ player_cards ?? ""}}
-</div>
+    <div class="cards">
+        {{ cards ?? ""}}
+    </div>
 
-<form method="post">
-    {% if new_card_button == true %}
-        <input type="submit" name="newCard" value="Ett till kort">
-    {% else %}
-        <input type="submit" name="newCard" value="Ett till kort" disabled="disabled">
-    {% endif %}
-</form>
+    {{ player_cards_sum ?? ""}}
+    <div class="player_cards_box">
+        <div class="player_cards">
+            {{ player_cards ?? ""}}
+        </div>
+    </div>
 
-<form method="post">
-    <input type="submit" name="done" value="Klar">
-</form>
+    <form method="post">
+        {% if new_card_button == true %}
+            <input type="submit" name="newCard" value="Ett till kort">
+        {% else %}
+            Du fick för mycket poäng!
+        {% endif %}
+    </form>
 
-<br><br>
+    <form method="post">
+        <input type="submit" name="done" value="Klar">
+    </form>
 
-{{ game_over ?? "" }}
+    <br><br>
 
-<br><br><br><br>
+    {{ game_over ?? "" }}
 
-<form method="post">
-    <input type="submit" name="kill_sess" value="kill session">
-</form>
+    <br><br><br><br>
+
+    <form method="post">
+        <input type="submit" name="kill_sess" value="kill session">
+    </form>
 
 
-{{ debug ?? "" }}
-{{ debug2 ?? "" }}
-
+    {{ debug ?? "" }}
+    {{ debug2 ?? "" }}
+{% endif %}
 
 {{ include('base/flash-messages.html.twig') }}
 {% endblock %}

@@ -44,6 +44,16 @@ class Player
         return False;
     }
 
+    public function get_ace_data() 
+    {
+        $data = [
+            "card" => mb_substr($this->print_cards(), -2),
+            "player_cards" => $this->print_cards(),
+            "player_cards_sum" => $this->print_card_sum()
+        ];
+        return $data;
+    }
+
     public function make_ace_value($value)
     {
         $this->cards[count($this->cards)-1]->value = $value;

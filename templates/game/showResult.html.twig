@@ -1,0 +1,24 @@
+{% extends "base/base.html.twig" %}
+{% block title %}Game{% endblock %}
+
+{% block content %}
+
+<div class="game_over">
+    {{ game_over ?? ""}}
+</div>
+
+{% for player in player_data %}
+    <div class="player{{player.class_name}}">
+        {{ player.cards }}
+    </div>
+{% endfor %}
+
+
+<form method="post">
+    <input type="submit" name="kill_sess" value="kill session">
+</form>
+
+
+{{ include('base/flash-messages.html.twig') }}
+{% endblock %}
+
